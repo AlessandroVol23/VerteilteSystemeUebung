@@ -1,0 +1,32 @@
+package de.othr.vs;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+public class Server {
+
+	public static void main(String[] args) {
+		ServerSocket server = null;
+		int port=0;
+		if (args.length > 0) {
+			port = Integer.parseInt(args[0]);
+		}
+		try {
+			server = new ServerSocket(port);
+			System.out.println("Warte auf Verbindungen...");
+			server.accept();
+			System.out.println("Neue Verbindung von " + server.getInetAddress());
+			System.out.println("Hallo Welt!");
+			
+			server.close();
+
+			
+			while (true) {
+				
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
