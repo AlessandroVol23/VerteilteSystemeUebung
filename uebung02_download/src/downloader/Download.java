@@ -14,13 +14,14 @@ public class Download implements Runnable {
 	int count = 0;
 	private Lock lock;
 	private Condition waitCond;
-	private CountDownLatch latch;
+	private CountDownLatch latchEnd;
 
-	public Download(JProgressBar balken, Lock lock, Condition waitCond, CountDownLatch latch) {
+	public Download(JProgressBar balken, Lock lock, Condition waitCond,
+			CountDownLatch latchEnd) {
 		this.balken = balken;
 		this.lock = lock;
 		this.waitCond = waitCond;
-		this.latch = latch;
+		this.latchEnd = latchEnd;
 	}
 
 	@Override
@@ -32,7 +33,6 @@ public class Download implements Runnable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		latch.countDown();
 		lock.unlock();
 
 		for (int i = 0; i < 100; i++) {
@@ -46,6 +46,8 @@ public class Download implements Runnable {
 			}
 
 		}
+		latchEnd.countDown();
+		
 	}
 
 	public void wakeUp() {

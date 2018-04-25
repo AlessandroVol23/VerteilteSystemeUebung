@@ -29,16 +29,16 @@ public class Browser extends JFrame implements ActionListener {
 
 	private Lock lock = new ReentrantLock();
 	private Condition waitCond = lock.newCondition();
-	private ExecutorService es;
-	private CountDownLatch latch;
+	//private CountDownLatch latchStart;
+	private CountDownLatch latchEnd;
 
 	public Browser(int downloads) {
 		super("Mein Download-Browser");
 		this.downloads = downloads;
 
 		// Initialisierung Ihrer Synchronisations-Hilfsklassen hier:
-		this.es = Executors.newFixedThreadPool(this.downloads);
-		this.latch = new CountDownLatch(this.downloads);
+		//this.latchStart = new CountDownLatch(1);
+		this.latchEnd = new CountDownLatch(this.downloads);
 
 		// Aufbau der GUI-Elemente:
 		balken = new JProgressBar[downloads];
@@ -51,12 +51,7 @@ public class Browser extends JFrame implements ActionListener {
 			reihe.add(balken[i]);
 			zeilen.add(reihe);
 
-			// neue Download-Threads erzeugen und starten
-			// ggf. müssen Synchronisations-Objekte im Konstruktor ueergeben
-			// werden!!
-			// balken ist ebenfalls zu uebergeben!
-			// new Thread(new Download(balken[i], lock, waitCond)).start();
-			es.execute(new Thread(new Download(balken[i], lock, waitCond, latch)));
+			new Thread(new Download(balken[i], lock, waitCond, latchEnd)).start();
 
 		}
 
@@ -77,58 +72,33 @@ public class Browser extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// Blockierte Threads jetzt laufen lassen:
-		System.out.println("Klick on download starten");
+		
 		lock.lock();
-		this.waitCond.signalAll();
+			this.waitCond.signalAll();
 		lock.unlock();
 
 		startButton.setEnabled(false);
 		startButton.setSelected(false);
 		startButton.setText("Downloads laufen...");
-
-		// Auf Ende aller Download-Threads warten ... erst dann die Beschriftung
-		// aendern
-		// Achtung, damit die Oberflaeche "reaktiv" bleibt dies in einem eigenen
-		// Runnable ausfuehren!
-		es.shutdown();
-		try {
-			while(!es.awaitTermination(60, TimeUnit.MINUTES)) {
-				System.out.println("VORBEI");
+		
+		new Thread(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				try
+				{
+					latchEnd.await();
+					startButton.setText("ENDE");
+				}
+				catch (InterruptedException e)
+				{
+					e.printStackTrace();
+				}
 			}
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
+		}).start();
 
 	}
 
-	public void end() {
-
-		/*
-		 * latch.await(); System.out.println("Vorbei");
-		 */
-
-		/*
-		 * es.shutdown(); try { es.awaitTermination(Long.MAX_VALUE,
-		 * TimeUnit.NANOSECONDS); System.out.println("VORBEI");
-		 * 
-		 * } catch (InterruptedException e) { }
-		 */
-		/*
-		 * 
-		 * if (es.isTerminated()) { System.out.println("VORBEI");
-		 * 
-		 * }
-		 * 
-		 */
-		/*
-		 * if (es.awaitTermination(60000, TimeUnit.SECONDS)) {
-		 * 
-		 * System.out.println("VORBEI"); }
-		 */
-
-	}
 
 }
