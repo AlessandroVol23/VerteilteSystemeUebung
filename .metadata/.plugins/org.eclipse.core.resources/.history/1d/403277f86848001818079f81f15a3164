@@ -1,0 +1,19 @@
+package downloader;
+
+import java.util.Random;
+
+public class Download implements Runnable {
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		try {
+			Thread.sleep(new Random().nextInt(10000));
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}
