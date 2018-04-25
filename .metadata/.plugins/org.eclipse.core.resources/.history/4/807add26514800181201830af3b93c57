@@ -1,0 +1,19 @@
+package ueubung01;
+
+import java.util.Random;
+
+public class Hersteller implements Runnable{
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		while(true) {
+			Auto auto = new Auto("R-FH-" + new Random().nextInt(1000));
+			Thread.sleep(10000);
+		}
+		
+	}
+	
+	
+
+}

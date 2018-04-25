@@ -1,0 +1,20 @@
+package uebung02;
+
+public class Waiter implements Runnable{
+
+	private String name;
+	private KitchenCounter theke;
+
+	public Waiter(KitchenCounter theke, String name) {
+		this.theke = theke;
+		this.name = name;
+
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

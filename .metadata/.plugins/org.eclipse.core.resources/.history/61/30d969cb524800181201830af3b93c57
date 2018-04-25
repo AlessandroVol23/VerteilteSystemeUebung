@@ -1,0 +1,23 @@
+package ueubung01;
+
+public class Kunde implements Runnable{
+	
+	private String name;
+	private Parkhaus parkhaus;
+	
+	public Kunde(String name, Parkhaus ph) {
+		this.name = name;
+		this.parkhaus = ph; 
+	}
+	
+	public void kaufeAuto() {
+		
+	}
+
+	@Override
+	public void run() {
+		
+		
+	}
+
+}

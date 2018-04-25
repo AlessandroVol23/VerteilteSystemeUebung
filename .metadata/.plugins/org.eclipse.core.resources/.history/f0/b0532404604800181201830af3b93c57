@@ -1,0 +1,26 @@
+package uebung02;
+
+public class KitchenCounter {
+	
+	private int capacity;
+	
+	public KitchenCounter(int cap) {
+		this.capacity = cap; 
+		
+	}
+	
+	public void put() {
+		this.capacity++;
+		System.out.println("Leberkasssemmel erstellt.\t Vorhanden: " + this.capacity);
+		
+	}
+	
+	public void take() {
+		this.capacity--;
+		System.out.println("Leberkasssemmel gegessen.\t Vorhanden: " + this.capacity);
+		
+	}
+	
+
+
+}

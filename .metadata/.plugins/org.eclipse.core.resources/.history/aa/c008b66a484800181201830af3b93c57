@@ -1,0 +1,74 @@
+package ueubung01;
+// Aktive Klasse
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
+public class Auto implements Thread {
+
+	private boolean faehrt;
+	private String kennzeichen;
+	private Parkhaus parkhaus;
+
+	public Auto(String kennzeichen, Parkhaus parkhaus) {
+		this.faehrt = true;
+		this.kennzeichen = kennzeichen;
+		this.parkhaus = parkhaus;
+		// System.out.println("Auto mit kennzeichen " + this.kennzeichen +
+		// "erstellt!");
+	}
+
+	public boolean isFaehrt() {
+		return faehrt;
+	}
+
+	public void setFaehrt(boolean faehrt) {
+		this.faehrt = faehrt;
+	}
+
+	public String getKennzeichen() {
+		return kennzeichen;
+	}
+
+	public void setKennzeichen(String kennzeichen) {
+		this.kennzeichen = kennzeichen;
+	}
+
+	@Override
+	public void run() {
+
+		while (true) {
+
+			// Auto fährt nach max 10 Sek in Parkhaus
+			try {
+				Thread.sleep(new Random().nextInt(10000));
+				parkhaus.autoFaehrtEin(this);
+//				this.wait30Secs();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// Auto verlässt nach max 10 Sek Parkhaus
+			try {
+				Thread.sleep(new Random().nextInt(10000));
+				parkhaus.autoFaehrtAus(this);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+	
+	public void wait30Secs() {
+		try {
+			TimeUnit.SECONDS.sleep(30);
+			setDaemon(true);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

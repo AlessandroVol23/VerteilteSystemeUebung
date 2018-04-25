@@ -1,0 +1,285 @@
+package ueubung01;
+
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
+
+//Passive Klasse
+public class Parkhaus {
+
+	private int anzahlParkplaetzeGesamt;
+	private int anzahlFreieParkplaetze;
+	private int autoInParkhaus;
+	private Deque<Auto> autos = new Deque<Auto>() {
+		
+		@Override
+		public <T> T[] toArray(T[] arg0) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Object[] toArray() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public boolean retainAll(Collection<?> arg0) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public boolean removeAll(Collection<?> arg0) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public boolean isEmpty() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public boolean containsAll(Collection<?> arg0) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public void clear() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public boolean addAll(Collection<? extends Auto> arg0) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public int size() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+		@Override
+		public boolean removeLastOccurrence(Object o) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public Auto removeLast() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public boolean removeFirstOccurrence(Object o) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public Auto removeFirst() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public boolean remove(Object o) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public Auto remove() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public void push(Auto e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public Auto pop() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Auto pollLast() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Auto pollFirst() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Auto poll() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Auto peekLast() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Auto peekFirst() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Auto peek() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public boolean offerLast(Auto e) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public boolean offerFirst(Auto e) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public boolean offer(Auto e) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public Iterator<Auto> iterator() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Auto getLast() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Auto getFirst() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Auto element() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Iterator<Auto> descendingIterator() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public boolean contains(Object o) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public void addLast(Auto e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void addFirst(Auto e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public boolean add(Auto e) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+	};
+
+	public Parkhaus(int kapa) {
+		this.anzahlParkplaetzeGesamt = kapa;
+		this.anzahlFreieParkplaetze = kapa;
+		this.autoInParkhaus = 0;
+	}
+
+	public synchronized void autoFaehrtEin(Auto auto) {
+		if (this.anzahlFreieParkplaetze > 0) {
+			this.anzahlFreieParkplaetze--;
+			this.autoInParkhaus++;
+			System.out.println("Auto " + auto.getKennzeichen() + " fährt in Parkhaus ein!");
+			this.printStatus();
+		} else {
+			System.out.println("Warten an Schranke: " + auto.getKennzeichen());
+		}
+	}
+
+	public synchronized void autoFaehrtAus(Auto auto) {
+		if (this.autoInParkhaus >= 2) {
+			this.anzahlFreieParkplaetze++;
+			this.autoInParkhaus--;
+			System.out.println("Auto " + auto.getKennzeichen() + " fährt aus Parkhaus aus!");
+			this.printStatus();
+		} else {
+			System.out.println("Zu wenig Autos in Parkhaus");
+		}
+
+	}
+
+	public void printStatus() {
+		System.out.println("Noch verfügbare Parkplätze: " + this.anzahlFreieParkplaetze);
+
+	}
+
+	public int getAnzahlParkplaetzeGesamt() {
+		return anzahlParkplaetzeGesamt;
+	}
+
+	public void setAnzahlParkplaetzeGesamt(int anzahlParkplaetzeGesamt) {
+		this.anzahlParkplaetzeGesamt = anzahlParkplaetzeGesamt;
+	}
+
+	public int getAnzahlFreieParkplaetze() {
+		return anzahlFreieParkplaetze;
+	}
+
+	public void setAnzahlFreieParkplaetze(int anzahlFreieParkplaetze) {
+		this.anzahlFreieParkplaetze = anzahlFreieParkplaetze;
+	}
+
+	public int getAutoInParkhaus() {
+		return autoInParkhaus;
+	}
+
+	public void setAutoInParkhaus(int autoInParkhaus) {
+		this.autoInParkhaus = autoInParkhaus;
+	}
+	
+	
+}

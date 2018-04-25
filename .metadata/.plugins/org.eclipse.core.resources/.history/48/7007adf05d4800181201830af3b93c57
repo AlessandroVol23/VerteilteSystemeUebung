@@ -1,0 +1,17 @@
+package uebung02;
+
+public class Simulation {
+
+	public static void main(String[] args) {
+		
+		KitchenCounter theke = new KitchenCounter(4);
+		Waiter w = new Waiter(theke, "Kellner-1");
+		Thread tWaiter = new Thread(w);
+		
+		new Thread( new Waiter(theke, "Kellner-1") );
+
+		
+
+	}
+
+}

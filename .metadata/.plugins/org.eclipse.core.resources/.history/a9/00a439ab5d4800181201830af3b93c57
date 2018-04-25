@@ -1,0 +1,13 @@
+package uebung02;
+
+public class Simulation {
+
+	public static void main(String[] args) {
+		
+		KitchenCounter theke = new KitchenCounter(4);
+		new Thread (new Waiter(theke, "Kellner-1")).start();
+		
+
+	}
+
+}

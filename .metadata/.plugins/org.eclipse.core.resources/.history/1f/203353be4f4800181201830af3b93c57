@@ -1,0 +1,8 @@
+import java.util.Deque;
+
+
+public class QueueTest {
+	
+	public Deque<int> intQueue = new Deque<int>()
+
+}

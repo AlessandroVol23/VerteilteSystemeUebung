@@ -1,0 +1,11 @@
+package ueubung01;
+
+public class Kunde {
+	
+	private String name;
+	
+	public Kunde(String name) {
+		this.name = name;
+	}
+
+}

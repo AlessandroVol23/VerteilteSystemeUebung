@@ -1,0 +1,37 @@
+package ueubung01;
+
+public class Kunde implements Runnable {
+
+	private String name;
+	private Parkhaus parkhaus;
+
+	public Kunde(String name, Parkhaus ph) {
+		this.name = name;
+		this.parkhaus = ph;
+	}
+
+	public void kaufeAuto() {
+
+	}
+
+	@Override
+	public void run() {
+		while (true) {
+
+			try {
+				Thread.sleep(10000);
+				if (parkhaus.autos.isEmpty() == false) {
+					System.out.println(
+							"Kunde " + this.name + " kauf Auto: " + parkhaus.autos.pollFirst().getKennzeichen());
+				} else {
+					System.out.println("Kein Auto verfügbar. Warten....");
+				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+}

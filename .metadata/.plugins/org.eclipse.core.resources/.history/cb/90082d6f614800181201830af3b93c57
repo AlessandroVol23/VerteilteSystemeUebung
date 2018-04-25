@@ -1,0 +1,20 @@
+package uebung02;
+
+public class Student implements Runnable {
+
+	private KitchenCounter theke;
+	private String name;
+
+	public Student(KitchenCounter theke, String string) {
+		this.theke = theke;
+		this.name = name;
+
+	}
+
+	@Override
+	public void run() {
+		
+
+	}
+
+}

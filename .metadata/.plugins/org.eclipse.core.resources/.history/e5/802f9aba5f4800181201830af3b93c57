@@ -1,0 +1,20 @@
+package uebung02;
+
+public class KitchenCounter {
+	
+	private int capacity;
+	
+	public KitchenCounter(int cap) {
+		this.capacity = cap; 
+		
+	}
+	
+	public void put() {
+		
+	}
+	
+	public void take() {
+		
+	}
+
+}
