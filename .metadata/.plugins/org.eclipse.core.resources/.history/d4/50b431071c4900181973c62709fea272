@@ -1,0 +1,60 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class Server {
+
+	public static void main(String[] args) {
+
+		int port = 1234;
+		if (args.length > 0) {
+			port = Integer.parseInt(args[0]);
+		}
+		try (ServerSocket server = new ServerSocket(port);) {
+			System.out.println("Server an port " + port + " gestartet");
+			System.out.println("Warte auf Verbindungen...");
+			ExecutorService es = Executors.newFixedThreadPool(100);
+
+			while (true) {
+
+				// Warte auf neue Verbindung
+				try (Socket clientConnection = server.accept();) {
+
+					// Erstelle neue Verbindung und schick sie in Thread Pool
+					Responder newClient = new Responder(clientConnection);
+					es.execute(newClient);
+					
+					InputStream in = clientConnection.getInputStream();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+					OutputStream out = clientConnection.getOutputStream();
+					PrintWriter writer = new PrintWriter(out);
+
+					String eingang = reader.readLine();
+					System.out.println(eingang);
+
+					writer.println("Antwort von Server: " + "*" + eingang + "*");
+					writer.flush();
+
+					if (eingang == "EXIT") {
+						server.close();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

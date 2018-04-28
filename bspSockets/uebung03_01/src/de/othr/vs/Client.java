@@ -23,8 +23,8 @@ public class Client implements Runnable {
 
 			// Lesen und schreiben in aus dem Socket
 			// Gets hier drinnen
-			InputStream in = in = socket.getInputStream();
-			;
+			InputStream in = socket.getInputStream();
+
 			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			OutputStream out = socket.getOutputStream();
 			PrintWriter writer = new PrintWriter(out);
@@ -33,11 +33,9 @@ public class Client implements Runnable {
 			System.out.println(reader.readLine());
 			System.out.println(reader.readLine());
 			System.out.println(socket.getInetAddress());
-			
-			
-			
+
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 

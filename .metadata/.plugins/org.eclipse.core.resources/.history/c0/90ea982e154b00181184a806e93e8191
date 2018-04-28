@@ -1,0 +1,15 @@
+package uebung04;
+
+public class Message {
+
+	private User fromUser;
+	private User toUser;
+	private String message;
+
+	public Message(User _fromUser, User _toUser, String _message) {
+		this.fromUser = _fromUser;
+		this.toUser = _toUser;
+		this.message = _message;
+	}
+
+}

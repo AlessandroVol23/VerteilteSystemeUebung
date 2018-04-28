@@ -6,8 +6,14 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class Server {
+	
+	private static final int THREAD_POOLS_SIZE = 10;
+	public static final ScheduledExecutorService RESPONDER_POOL = Executors.newScheduledThreadPool(THREAD_POOLS_SIZE);
 
 	public static void main(String[] args) {
 
@@ -15,30 +21,22 @@ public class Server {
 		if (args.length > 0) {
 			port = Integer.parseInt(args[0]);
 		}
-		try {
-			ServerSocket server = new ServerSocket(port);
+		try (ServerSocket server = new ServerSocket(port);) {
 			System.out.println("Server an port " + port + " gestartet");
 			System.out.println("Warte auf Verbindungen...");
 
-			Socket s = server.accept();
-			System.out
-					.println("Neue Verbindung von " + server.getInetAddress().getHostName() + server.getInetAddress());
-			System.out.println("Hallo Welt!");
+			while (true) {
 
-			InputStream in = s.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+				// Warte auf neue Verbindung
+				Socket clientConnection = server.accept();
+				System.out.println("Neue Verbindung von " + clientConnection.getRemoteSocketAddress().toString());
 
-			OutputStream out = s.getOutputStream();
-			PrintWriter writer = new PrintWriter(out);
+				// Erstelle neue Verbindung und schick sie in Thread Pool
+				Responder newClient = new Responder(clientConnection);
+				RESPONDER_POOL.execute(newClient);
 
-			String eingang = reader.readLine();
-			System.out.println(eingang);
-			
-			writer.println("Antwort von Server: " + "*" + eingang + "*");
-			writer.flush();
+			}
 
-			server.close();
-			s.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

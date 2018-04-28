@@ -11,7 +11,7 @@ public class Client {
 
 	public static void main(String[] args) {
 
-		int port = 1234;
+		int port = 81;
 		String hostname = "localhost";
 		if (args.length == 2) {
 			port = Integer.parseInt(args[1]);
@@ -21,20 +21,25 @@ public class Client {
 		try {
 			Socket s = new Socket(hostname, port);
 
-			InputStream in = s.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-			OutputStream out = s.getOutputStream();
-			PrintWriter writer = new PrintWriter(out);
+			while (true) {
+				InputStream in = s.getInputStream();
+				BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+				OutputStream out = s.getOutputStream();
+				PrintWriter writer = new PrintWriter(out);
 
-			Scanner scanner = new Scanner(System.in);
-			String eingabe = scanner.nextLine();
-			writer.println(eingabe);
-			writer.flush();
+//				String antwort = reader.readLine();
 
-			String antwort = reader.readLine();
-			System.out.println(antwort);
+				Scanner scanner = new Scanner(System.in);
+				String eingabe = scanner.nextLine();
 
-			s.close();
+				writer.println(eingabe);
+				writer.flush();
+
+				if (eingabe == "EXIT") {
+					s.close();
+					scanner.close();
+				}
+			}
 
 		} catch (IOException e) {
 			e.printStackTrace();

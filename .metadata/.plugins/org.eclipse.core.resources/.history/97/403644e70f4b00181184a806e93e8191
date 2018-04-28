@@ -1,0 +1,9 @@
+package uebung04;
+
+import java.util.ArrayList;
+
+public class MessageDB {
+
+	private ArrayList<Message> allMessages = new ArrayList<Message>();
+
+}
