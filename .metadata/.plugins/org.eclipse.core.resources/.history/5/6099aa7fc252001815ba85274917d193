@@ -1,0 +1,18 @@
+package client;
+
+import java.rmi.RemoteException;
+
+public class UniklinikumRegensburg implements CallbackReferenceIF{
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+	@Override
+	public void setBestaetigung(Boolean b) throws RemoteException {
+		System.out.println("Wurde bestätigt! Bild ist analyisiert");
+	}
+
+}

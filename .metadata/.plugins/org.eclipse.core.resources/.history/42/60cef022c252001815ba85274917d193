@@ -1,0 +1,31 @@
+package server;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+import client.CallbackReferenceIF;
+import server.entity.Bericht;
+import server.entity.Roentgenbild;
+
+public class FrueherkennungsServer implements FrueherkennungsIF {
+
+	@Override
+	public Bericht analysieren(Roentgenbild bild, CallbackReferenceIF ref) throws RemoteException {
+		return null;
+	}
+
+	public static void main(String[] args) {
+		
+		try {
+			
+		
+		FrueherkennungsServer server = new FrueherkennungsServer();
+		FrueherkennungsIF stub = (FrueherkennungsIF)UnicastRemoteObject.exportObject(server,0);
+		} catch(RemoteException e ) {
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}
