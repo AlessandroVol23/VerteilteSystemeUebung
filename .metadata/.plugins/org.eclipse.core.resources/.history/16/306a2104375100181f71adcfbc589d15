@@ -1,0 +1,7 @@
+package uebung05_rmi;
+
+import java.io.Serializable;
+
+public class Bericht implements Serializable {
+
+}

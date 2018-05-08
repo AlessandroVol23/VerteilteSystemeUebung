@@ -1,0 +1,13 @@
+package server.entity;
+
+import java.util.Date;
+
+public class Bericht implements BerichtIF {
+	
+	private Date datum = new Date();
+	private String diagnose;
+	private String weiteresVorgehen;
+	
+	
+
+}

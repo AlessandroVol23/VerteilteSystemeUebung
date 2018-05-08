@@ -1,0 +1,19 @@
+package client;
+
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class UniklinikumRegensburg {
+
+	public static void main(String[] args) {
+
+		try {
+			Registry reg = LocateRegistry.getRegistry("localhost", 1099);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

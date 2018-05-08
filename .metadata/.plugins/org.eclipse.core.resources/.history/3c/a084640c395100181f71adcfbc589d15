@@ -1,0 +1,11 @@
+package uebung05_rmi;
+
+public class FrueherkennungsServer implements FrueherkennungIF{
+
+	@Override
+	public Bericht analysieren(Roentgenbild rb) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,14 @@
+package client;
+
+import java.rmi.registry.LocateRegistry;
+
+public class TestClient {
+
+	public static void main(String[] args) {
+		
+		Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+		
+
+	}
+
+}

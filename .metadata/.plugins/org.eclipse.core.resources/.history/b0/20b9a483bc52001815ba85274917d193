@@ -1,0 +1,21 @@
+package server;
+
+import java.rmi.RemoteException;
+
+import server.entity.Bericht;
+import server.entity.Roentgenbild;
+
+public class FrueherkennungsServer implements FrueherkennungsIF {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Bericht analysieren(Roentgenbild bild) throws RemoteException {
+		System.out.println("Server: Analysiere Bild...");
+		return null;
+	}
+
+}

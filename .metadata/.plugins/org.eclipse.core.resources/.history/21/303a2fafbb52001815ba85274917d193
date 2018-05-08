@@ -1,0 +1,7 @@
+package server.entity;
+
+public class BerichtIF extends Remote{
+	
+	
+
+}

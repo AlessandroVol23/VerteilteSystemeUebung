@@ -1,0 +1,17 @@
+package server;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+import server.entity.Aufnahmewunsch;
+import server.entity.Sendung;
+
+public interface TvControllerIF extends Remote {
+	
+	public Sendung getAktuelleSendung() throws RemoteException;
+	
+	public void registriereAufnahmewunsch(Aufnahmewunsch aufnahmewunsch) throws RemoteException;
+	
+	public void wechsleKanal(int neuerKanal) throws RemoteException;
+
+}

@@ -1,0 +1,7 @@
+package uebung05_rmi;
+
+public interface FrueherkennungIF extends Remote{
+	
+	public Bericht analysieren(Roentgenbild rb);
+
+}

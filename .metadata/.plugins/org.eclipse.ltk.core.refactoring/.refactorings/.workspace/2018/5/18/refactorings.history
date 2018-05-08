@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;uebung05_rmi_client&apos;" deleteContents="false" description="Delete resource &apos;uebung05_rmi_client&apos;" element1="/uebung05_rmi_client" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1525617543702"/>
+</session>

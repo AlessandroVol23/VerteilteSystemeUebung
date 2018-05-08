@@ -27,4 +27,25 @@
 <fullyQualifiedTypeName name="uebung04.Message"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="uebung05_rmi.Roentgenbild"/>
+<fullyQualifiedTypeName name="uebung05_rmi.FrueherkennungsServer"/>
+<fullyQualifiedTypeName name="uebung05_rmi.FrueherkennungIF"/>
+<fullyQualifiedTypeName name="server.Bericht"/>
+<fullyQualifiedTypeName name="server.FrueherkennungIF"/>
+<fullyQualifiedTypeName name="server.FrueherkennungsServer"/>
+<fullyQualifiedTypeName name="server.FrueherkennungsIF"/>
+<fullyQualifiedTypeName name="server.Roentgenbild"/>
+<fullyQualifiedTypeName name="server.RoentgenbildIF"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="server.entity.Sendung"/>
+<fullyQualifiedTypeName name="server.TvController"/>
+<fullyQualifiedTypeName name="java.rmi.registry.Registry"/>
+<fullyQualifiedTypeName name="java.rmi.registry.LocateRegistry"/>
+<fullyQualifiedTypeName name="server.TvControllerIF"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="server.entity.Aufnahmewunsch"/>
+<fullyQualifiedTypeName name="java.rmi.server.UnicastRemoteObject"/>
+<fullyQualifiedTypeName name="server.AufnahmeWunschIF"/>
+<fullyQualifiedTypeName name="java.rmi.RemoteException"/>
 </qualifiedTypeNameHistroy>

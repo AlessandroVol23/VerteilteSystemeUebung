@@ -1,0 +1,12 @@
+package server;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface FrueherkennungsIF extends Remote{
+	
+	public Bericht analysiere(Roentgenbild bild) throws RemoteException;
+
+	Bericht analysiere(RoentgenbildIF bild) throws RemoteException;
+
+}

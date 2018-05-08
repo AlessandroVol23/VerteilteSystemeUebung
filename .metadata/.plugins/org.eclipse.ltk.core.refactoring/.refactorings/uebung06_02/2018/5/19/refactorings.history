@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 3 elements to &apos;uebung06_02/src/server.entity&apos;&#x0D;&#x0A;- Original project: &apos;uebung06_02&apos;&#x0D;&#x0A;- Destination element: &apos;uebung06_02/src/server.entity&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     server.Roentgenbild.java&#x0D;&#x0A;     server.Bericht.java&#x0D;&#x0A;     server.RoentgenbildIF.java&#x0D;&#x0A;- Update references to refactored element" description="Move compilation units" destination="/src&lt;server.entity" element1="/src&lt;server{Roentgenbild.java" element2="/src&lt;server{Bericht.java" element3="/src&lt;server{RoentgenbildIF.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1525782167257" units="3" version="1.0"/>
+</session>

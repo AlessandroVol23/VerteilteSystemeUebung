@@ -1,0 +1,19 @@
+package server;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.Date;
+
+public interface RoentgenbildIF extends Remote {
+
+	Date aufnahmeVom = null;
+	String patientenName = "Horst";
+	byte[] rawData = null;
+	
+	public Date getaufnahmeVom() throws RemoteException;
+	
+	public String getpatientenName() throws RemoteException;
+	
+	public byte[] getrawData() throws RemoteException;
+
+}

@@ -1,0 +1,28 @@
+package server;
+
+import java.rmi.RemoteException;
+
+import server.entity.Aufnahmewunsch;
+import server.entity.Sendung;
+
+public class TvController implements TvControllerIF{
+
+	@Override
+	public Sendung getAktuelleSendung() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void registriereAufnahmewunsch(Aufnahmewunsch aufnahmewunsch) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void wechsleKanal(int neuerKanal) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,9 +1,0 @@
-package uebung04;
-
-public class Message {
-
-	private User fromUser;
-	private User toUser;
-	private String message;
-
-}

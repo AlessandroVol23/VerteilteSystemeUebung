@@ -1,0 +1,24 @@
+package server;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+import server.entity.Bericht;
+import server.entity.Roentgenbild;
+
+public class FrueherkennungsServer implements FrueherkennungsIF {
+
+	public static void main(String[] args) {
+		FrueherkennungsServer server = new FrueherkennungsServer();
+		FrueherkennungsIF stub = (FrueherkennungsIF)UnicastRemoteObject.exportObject(server, 0);
+
+	}
+
+	@Override
+	public Bericht analysieren(Roentgenbild bild) throws RemoteException {
+		System.out.println("Server: Analysiere Bild...");
+		Bericht bericht = new Bericht("Schaut ois guad aus", "Goar nix");
+		return bericht;
+	}
+
+}

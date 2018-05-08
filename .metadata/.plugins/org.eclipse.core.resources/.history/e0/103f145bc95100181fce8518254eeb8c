@@ -1,0 +1,26 @@
+package client;
+
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+import server.TvController;
+import server.TvControllerIF;
+
+public class SmartphoneApp {
+
+	public static void main(String[] args) {
+		try {
+			TvControllerIF tvController = new TvController();
+			Registry reg = LocateRegistry.getRegistry("localhost", 1099);
+			
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}

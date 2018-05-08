@@ -1,0 +1,19 @@
+package uebung05_rmi;
+
+public class FrueherkennungsServer implements FrueherkennungIF{
+
+	public static void main(String[] args) {
+		FrueherkennungsServer frueherkennungsServer = new FrueherkennungsServer();
+	}
+	
+	
+	@Override
+	public Bericht analysieren(Roentgenbild rb) {
+		
+		System.out.println("Analysiere Bericht ...");
+		
+		return null;
+	}
+	
+
+}

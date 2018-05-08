@@ -1,0 +1,13 @@
+package client;
+
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class UniklinikRegensburg {
+
+	public static void main(String[] args) {
+		Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+
+	}
+
+}

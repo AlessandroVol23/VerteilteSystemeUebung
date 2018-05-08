@@ -1,0 +1,50 @@
+package server;
+
+import java.rmi.AlreadyBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
+
+import server.entity.Aufnahmewunsch;
+import server.entity.Sendung;
+
+public class TvController implements TvControllerIF {
+
+	public static void main(String[] args) {
+		
+		
+		try {
+			System.out.println("Ersteller TV Controller und Stub.");
+			TvControllerIF tvController = new TvController();
+			TvControllerIF stub = (TvControllerIF) UnicastRemoteObject.exportObject(tvController, 0);
+			
+			System.out.println("Erstelle Registry.");
+			Registry reg = LocateRegistry.createRegistry(1099);
+			reg.bind("TvController", stub);
+			System.out.println("Server bereit...");
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (AlreadyBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public Sendung getAktuelleSendung() throws RemoteException {
+		System.out.println("TvController: Sende aktuelle Sendung");
+		return new Sendung("Tatort", "einer stirbt, zwei ermitteln");
+	}
+
+	@Override
+	public void registriereAufnahmewunsch(Aufnahmewunsch aufnahmewunsch) throws RemoteException {
+	}
+
+	@Override
+	public void wechsleKanal(int neuerKanal) throws RemoteException {
+	}
+
+}

@@ -1,0 +1,11 @@
+package server.entity;
+
+import java.util.Date;
+
+public class Aufnahmewunsch {
+	
+	private Date startZeitpunkt;
+	private Date endZeitpunkt;
+	private Codec codec;
+
+}

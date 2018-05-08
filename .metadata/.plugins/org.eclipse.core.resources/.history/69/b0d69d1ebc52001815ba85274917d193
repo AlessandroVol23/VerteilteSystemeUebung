@@ -1,0 +1,11 @@
+package server.entity;
+
+import java.rmi.Remote;
+
+
+public interface BerichtIF extends Remote{
+	
+	
+	
+
+}

@@ -1,0 +1,12 @@
+package server;
+
+import java.rmi.Remote;
+import java.util.Date;
+
+public interface RoentgenbildIF extends Remote {
+
+	Date aufnahmeVom = null;
+	String patientenName=null;
+	byte[] rawData=null;
+
+}
