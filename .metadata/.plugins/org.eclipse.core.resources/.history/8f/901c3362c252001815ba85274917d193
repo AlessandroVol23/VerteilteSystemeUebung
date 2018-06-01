@@ -1,9 +1,0 @@
-package client;
-
-public class UniklinikumRegensburg implements CallbackReferenceIF{
-
-	public static void main(String[] args) {
-
-	}
-
-}

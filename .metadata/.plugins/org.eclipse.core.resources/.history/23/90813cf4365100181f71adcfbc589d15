@@ -1,5 +1,0 @@
-package uebung05_rmi;
-
-public interface FrueherkennungIF {
-
-}

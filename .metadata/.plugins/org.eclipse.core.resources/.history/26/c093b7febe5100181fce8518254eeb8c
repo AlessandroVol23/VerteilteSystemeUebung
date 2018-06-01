@@ -1,7 +1,0 @@
-package server;
-
-import java.io.Serializable;
-
-public class Bericht implements Serializable {
-
-}

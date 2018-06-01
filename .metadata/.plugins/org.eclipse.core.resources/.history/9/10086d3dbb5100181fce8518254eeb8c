@@ -1,7 +1,0 @@
-package server;
-
-public interface FrueherkennungIF {
-	
-	public Bericht analysieren (Roentgenbild bild);
-
-}
