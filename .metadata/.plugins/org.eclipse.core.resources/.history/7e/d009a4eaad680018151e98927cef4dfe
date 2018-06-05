@@ -1,0 +1,15 @@
+package uebung02_c_050618;
+
+public class Fahrzeughersteller implements Runnable{
+	
+	public public Fahrzeughersteller() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

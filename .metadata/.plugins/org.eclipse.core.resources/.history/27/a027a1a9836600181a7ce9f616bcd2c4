@@ -1,0 +1,7 @@
+package uebung02_020618;
+
+public class Auto {
+	
+	private String kennzeichen;
+
+}

@@ -1,0 +1,13 @@
+package uebung02_020618;
+
+public class Simulation {
+
+	public static void main(String[] args) {
+		
+		Parkhaus parkhaus = new Parkhaus(10);
+		
+		
+
+	}
+
+}

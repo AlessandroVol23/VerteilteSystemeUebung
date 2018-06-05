@@ -1,0 +1,16 @@
+package uebung02_c_050618;
+
+public class Parkhaus {
+	
+	private int kapazitaet;
+	
+
+	public Parkhaus(int maxKapazitaet) {
+		this.kapazitaet = maxKapazitaet;
+	}
+	
+	public void autoAbstellen(Auto a) {
+		
+	}
+
+}

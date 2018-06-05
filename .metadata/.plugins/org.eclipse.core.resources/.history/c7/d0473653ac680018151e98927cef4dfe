@@ -1,0 +1,16 @@
+package uebung02_c_050618;
+
+public class Simulation {
+	
+	public static void main(String[] args) {
+		
+		Parkhaus auslieferungslager = new Parkhaus();
+		
+		Fahrzeughersteller fahrzeughersteller = new Fahrzeughersteller();
+		
+		for(int i = 0; i<5; i++) {
+			Kunden kunde = new Kunde();
+		}
+	}
+
+}

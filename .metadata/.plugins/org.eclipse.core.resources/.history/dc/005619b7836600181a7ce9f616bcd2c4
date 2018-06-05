@@ -1,0 +1,15 @@
+package uebung02_020618;
+
+public class Simulation {
+
+	public static void main(String[] args) {
+		
+		Parkhaus parkhaus = new Parkhaus(10);
+		
+		for(int i=1; i<= 20; i++) {
+			new Auto("R-FH " + i, parkhaus).start();
+		}
+
+	}
+
+}

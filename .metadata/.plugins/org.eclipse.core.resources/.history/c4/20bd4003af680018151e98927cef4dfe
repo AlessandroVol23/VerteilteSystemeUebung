@@ -1,0 +1,26 @@
+package uebung02_c_050618;
+
+public class Kunden implements Runnable{
+	
+	private Parkhaus parkhaus;
+	
+	public Kunden() {
+		
+	}
+	
+	public Kunden(Parkhaus auslieferungslager) {
+		this.parkhaus = auslieferungslager;
+	}
+
+	public void autoKaufen() {
+		Auto a = parkhaus.autoHolen();
+		System.out.println("Kaufe Auto " + a.getKennzeichen());
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

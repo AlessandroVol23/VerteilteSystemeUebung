@@ -1,0 +1,16 @@
+package uebung02_c_050618;
+
+public class Kunden {
+	
+	public Kunden() {
+		
+	}
+	
+	public Kunden(Parkhaus auslieferungslager) {
+	}
+
+	public Auto autoKaufen(Parkhaus ph) {
+		
+	}
+
+}

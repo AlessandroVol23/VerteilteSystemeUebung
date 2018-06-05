@@ -1,0 +1,39 @@
+package uebung02_c_050618;
+
+import java.util.Random;
+
+public class Fahrzeughersteller implements Runnable {
+
+	private Parkhaus parkhaus;
+	private Object monitor = new Object();
+
+	public Fahrzeughersteller(Parkhaus _parkhaus) {
+		this.parkhaus = _parkhaus;
+	}
+
+	@Override
+	public void run() {
+		
+		Thread.sleep(new Random().nextInt(10000));
+		
+		this.herstellen();
+	}
+
+	public void herstellen() {
+
+		synchronized (monitor) {
+
+			while (parkhaus.istKapazitaetFrei()) {
+				try {
+					monitor.wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			Auto a = new Auto("R-FH-" + new Random().nextInt(1000));
+			parkhaus.autoEinstellen(a);
+			System.out.println("Hersteller: Auto " + a.getKennzeichen() + " hergerstellt.");
+		}
+	}
+
+}

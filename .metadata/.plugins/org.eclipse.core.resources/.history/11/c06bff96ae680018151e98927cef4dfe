@@ -1,0 +1,18 @@
+package uebung02_c_050618;
+
+public class Kunden implements Runnable{
+	
+	private Parkhaus parkhaus;
+	
+	public Kunden() {
+		
+	}
+	
+	public Kunden(Parkhaus auslieferungslager) {
+	}
+
+	public void autoKaufen() {
+		
+	}
+
+}

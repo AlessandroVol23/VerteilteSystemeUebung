@@ -1,0 +1,42 @@
+package uebung02_020618;
+
+public class Parkhaus {
+
+	private int parkplaetze;
+	private Object monitor;
+
+	public Parkhaus(int anzahlParkplaetze) {
+		this.parkplaetze = anzahlParkplaetze;
+	}
+
+	public int getParkplaetze() {
+		return parkplaetze;
+	}
+
+	public void setParkplaetze(int parkplaetze) {
+		this.parkplaetze = parkplaetze;
+	}
+
+	public void einparken() {
+		synchronized(monitor) {
+			
+		}
+		while(this.parkplaetze > 0) {
+			try {
+				monitor.wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		this.parkplaetze--;
+		System.out.println("Aktuelle Parkplätze: " + this.parkplaetze);
+
+	}
+
+	public synchronized void ausparken() {
+		this.parkplaetze++;
+		System.out.println("Aktuelle Parkplätze: " + this.parkplaetze);
+
+	}
+}

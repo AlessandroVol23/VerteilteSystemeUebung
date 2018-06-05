@@ -1,0 +1,22 @@
+package uebung02_020618;
+
+public class Parkhaus {
+	
+	private int parkplaetze;
+	
+	public Parkhaus(int anzahlParkplaetze) {
+		this.parkplaetze = anzahlParkplaetze;
+	}
+
+	public int getParkplaetze() {
+		return parkplaetze;
+	}
+
+	public void setParkplaetze(int parkplaetze) {
+		this.parkplaetze = parkplaetze;
+	}
+	
+	
+
+
+}

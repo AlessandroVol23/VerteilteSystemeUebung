@@ -1,0 +1,30 @@
+package uebung02_c_050618;
+
+public class Simulation {
+
+	public static void main(String[] args) {
+
+		Parkhaus auslieferungslager = new Parkhaus(10);
+
+		
+		Fahrzeughersteller fahrzeughersteller = new Fahrzeughersteller(auslieferungslager);
+		Thread fhThread = new Thread(fahrzeughersteller);
+		fhThread.setDaemon(true);
+		fhThread.start();
+
+		Kunden kunde1 = new Kunden(auslieferungslager);
+		Kunden kunde2 = new Kunden(auslieferungslager);
+		Kunden kunde3 = new Kunden(auslieferungslager);
+		Kunden kunde4 = new Kunden(auslieferungslager);
+		Kunden kunde5 = new Kunden(auslieferungslager);
+		
+try {
+	
+		Thread.sleep(30000);
+} catch(InterruptedException e){
+	e.printStackTrace();
+}
+		System.out.println("Ende der Simulation");
+	}
+
+}

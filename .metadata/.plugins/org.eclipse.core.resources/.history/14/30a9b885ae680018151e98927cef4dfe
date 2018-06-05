@@ -1,0 +1,13 @@
+package uebung02_c_050618;
+
+public class Kunden {
+	
+	public Kunden() {
+		
+	}
+	
+	public Auto autoKaufen(Parkhaus ph) {
+		
+	}
+
+}

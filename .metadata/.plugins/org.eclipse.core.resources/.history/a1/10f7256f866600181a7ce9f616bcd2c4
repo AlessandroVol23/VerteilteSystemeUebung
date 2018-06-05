@@ -1,0 +1,26 @@
+package uebung02_020618;
+
+public class Simulation {
+
+	public static void main(String[] args) {
+		
+		Parkhaus parkhaus = new Parkhaus(10);
+		
+		for(int i=1; i<= 20; i++) {	
+			
+			String kennzeichen = "R-FH-" + i;
+			Thread t = new Thread(new Auto(kennzeichen, parkhaus));
+			t.setName(kennzeichen);
+		}
+		
+		try {
+			Thread.sleep(30000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Ende der Simulation");
+
+	}
+
+}

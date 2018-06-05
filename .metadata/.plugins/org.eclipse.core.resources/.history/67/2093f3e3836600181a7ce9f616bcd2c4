@@ -1,0 +1,12 @@
+package uebung02_020618;
+
+public class Parkhaus {
+	
+	private int parkplaetze;
+	
+	public Parkhaus(int anzahlParkplaetze) {
+		this.parkplaetze = anzahlParkplaetze;
+	}
+
+
+}
