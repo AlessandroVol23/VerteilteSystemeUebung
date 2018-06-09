@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-<typeInfo handle="=uebung05_rmi/C:\/Program Files\/Java\/jre1.8.0_161\/lib\/rt.jar&lt;java.io(Serializable.class[Serializable" modifiers="1537" timestamp="1521378885181"/>
-<typeInfo handle="=uebung06_02/src&lt;server{FrueherkennungsIF.java[FrueherkennungsIF" modifiers="513" timestamp="1525782166725"/>
-<typeInfo handle="=uebung06_02/C:\/Program Files\/Java\/jre1.8.0_161\/lib\/rt.jar&lt;java.rmi(Remote.class[Remote" modifiers="1537" timestamp="1521378885181"/>
+<typeInfo handle="=uebung02_02_040618/C:\/Program Files\/Java\/jre1.8.0_161\/lib\/rt.jar&lt;java.lang(Runnable.class[Runnable" modifiers="1537" timestamp="1521378885181"/>
 </typeInfoHistroy>
