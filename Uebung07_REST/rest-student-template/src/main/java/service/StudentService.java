@@ -75,7 +75,8 @@ public class StudentService {
         try {
             // Changed from Class.forName("com.mysql.jdbc.Driver") because this is deprecated
             Class.forName("com.mysql.cj.jdbc.Driver");
-
+            // IP  194.95.108.2
+            //Connection c = DriverManager.getConnection("jdbc:mysql://194.95.108.2", "vs-08", "vs-08-pw");
             Connection c = DriverManager.getConnection("jdbc:mysql://im-vm-011", "vs-08", "vs-08-pw");
 
             Statement statement = c.createStatement();
