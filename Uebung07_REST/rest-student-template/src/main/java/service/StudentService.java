@@ -73,6 +73,7 @@ public class StudentService {
         System.out.println("getStudentById: " + studentId);
 
         try {
+            // Changed from Class.forName("com.mysql.jdbc.Driver") because this is deprecated
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             Connection c = DriverManager.getConnection("jdbc:mysql://im-vm-011", "vs-08", "vs-08-pw");
