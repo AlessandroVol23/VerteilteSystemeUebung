@@ -13,31 +13,23 @@ public class Server {
 		try(ServerSocket serverSocket = new ServerSocket(port)) {
 			
 			while(true) {
-				
 				System.out.println("Starting Server....");
 				System.out.println("Waiting for Client...");
-				
 				try{
-					
 					Socket socket = serverSocket.accept();
 					System.out.println("New connection from " + socket.getInetAddress().getHostName());
 					Responder responder = new Responder(socket);
 					new Thread(responder).start();		
 					
-					
 				} catch(IOException e) {
 					e.printStackTrace();
 				}
-				
 			}
-			
-			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 }
