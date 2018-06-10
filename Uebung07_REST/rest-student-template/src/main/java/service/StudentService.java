@@ -77,7 +77,8 @@ public class StudentService {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // IP  194.95.108.2
             //Connection c = DriverManager.getConnection("jdbc:mysql://194.95.108.2", "vs-08", "vs-08-pw");
-            Connection c = DriverManager.getConnection("jdbc:mysql://im-vm-011", "vs-08", "vs-08-pw");
+            //Connection c = DriverManager.getConnection("jdbc:mysql://im-vm-011", "vs-08", "vs-08-pw");
+            Connection c = DriverManager.getConnection("jdbc:mysql://62.138.238.45", "vs-08", "vs-08-pw");
 
             Statement statement = c.createStatement();
             String query = "SELECT * FROM Student Where matrikelNr = 1234";
