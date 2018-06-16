@@ -1,3 +1,1 @@
 INDEX VERSION 1.130+C:\Users\Sandro\Nextcloud\Studium\6_Semester\VS\workspace\.metadata\.plugins\org.eclipse.jdt.core
-3367609215.index
-1947662744.index
