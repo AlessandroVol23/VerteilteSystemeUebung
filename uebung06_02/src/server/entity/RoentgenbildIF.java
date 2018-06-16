@@ -13,5 +13,7 @@ public interface RoentgenbildIF extends Remote {
 	public byte[] getRawData() throws RemoteException;
 	
 	public String ausgabe() throws RemoteException;
+	
+	public String ausgabe() throws RemoteException;
 
 }

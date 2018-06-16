@@ -1,6 +1,7 @@
 package service;
 
 import entity.Address;
+import entity.Pruefungsleistung;
 import entity.Student;
 
 import javax.print.attribute.standard.Media;
@@ -74,15 +75,22 @@ public class StudentService {
 
         try {
             // Changed from Class.forName("com.mysql.jdbc.Driver") because this is deprecated
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            //Class.forName("com.mysql.cj.jdbc.Driver");
             // IP  194.95.108.2
-            //Connection c = DriverManager.getConnection("jdbc:mysql://194.95.108.2", "vs-08", "vs-08-pw");
-            //Connection c = DriverManager.getConnection("jdbc:mysql://im-vm-011", "vs-08", "vs-08-pw");
-            Connection c = DriverManager.getConnection("jdbc:mysql://62.138.238.45", "vs-08", "vs-08-pw");
+            Connection c = DriverManager.getConnection("jdbc:mysql://im-vm-011/vs-08", "vs-08", "vs-08-pw");
+            System.out.println("Connected to Database.");
 
             Statement statement = c.createStatement();
-            String query = "SELECT * FROM Student Where matrikelNr = 1234";
-            ResultSet rs = statement.executeQuery(query);
+            PreparedStatement pStmt = null;
+            String query = "SELECT * FROM Student Where matrikelNr = ?";
+            pStmt = c.prepareStatement(query);
+            pStmt.setInt(1, studentId);
+
+
+            System.out.println("Executing query...");
+            ResultSet rs = pStmt.executeQuery();
+
+            //ResultSet rs = statement.executeQuery(query);
 
             rs.first();
             String studentVn = rs.getString("vorname");
@@ -91,14 +99,15 @@ public class StudentService {
             String studentStreet = rs.getString("strasse");
             String studentCity = rs.getString("ort");
 
-            Student newStudent = new Student(studentId, studentVn, studentNn, new Address(studentStreet, studentCity));
+            Student newStudent = new Student(studentId, studentVn, studentNn, new Address(studentStreet, studentCity), studentEcts);
 
 
             c.close();
             return newStudent;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } //catch (ClassNotFoundException e) {
+        // e.printStackTrace();
+        //}
+        catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -150,5 +159,113 @@ public class StudentService {
         return studentRange;
 
 
+    }
+
+
+    @Path("students/{id}/addExam")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Pruefungsleistung pruefungsleistungResource(@PathParam("id") int studentId, Pruefungsleistung newExam) {
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://im-vm-011/vs-08", "vs-08", "vs-08-pw");
+            System.out.println("Connection to database established!");
+
+            con.setAutoCommit(false);
+
+            PreparedStatement insertStmt = null;
+            String insertQuery = "INSERT INTO Pruefungsleistung (pruefungId, matrikelNr, versuch, note) VALUES (?, ?, ?, ?)";
+            insertStmt = con.prepareStatement(insertQuery);
+            insertStmt.setString(1, newExam.getPruefungID());
+            insertStmt.setInt(2,studentId);
+            insertStmt.setInt(3,newExam.getVersuch());
+            insertStmt.setDouble(4, newExam.getNote());
+
+            insertStmt.execute();
+
+            // Update ECTS in Student
+            PreparedStatement selectStmt = null;
+            String selQuery = "SELECT ects from Pruefung WHERE pruefungId = ?";
+            selectStmt = con.prepareStatement(selQuery);
+
+            selectStmt.setString(1, newExam.getPruefungID());
+
+            ResultSet rs = selectStmt.executeQuery();
+            rs.first();
+            int ectsToAdd = rs.getInt(1);
+            System.out.println("ECTS to add: " + ectsToAdd);
+
+            // Add ECTS to student
+
+            // Get current ects
+
+            PreparedStatement selectStmtEcts = null;
+            String selEctsQuery = "SELECT ects from Student Where matrikelNr = ?";
+            selectStmtEcts = con.prepareStatement(selEctsQuery);
+            selectStmtEcts.setInt(1,studentId);
+            ResultSet rs2 = selectStmtEcts.executeQuery();
+            rs2.first();
+            int currentEcts = rs2.getInt(1);
+            System.out.println("Current ECTS are: " +currentEcts);
+
+
+            PreparedStatement updateStmt = null;
+            String updateQuery = "UPDATE Student SET ects = ? WHERE matrikelNr = ?";
+            updateStmt = con.prepareStatement(updateQuery);
+            int newEcts = currentEcts + ectsToAdd;
+
+            updateStmt.setInt(1,newEcts);
+            updateStmt.setInt(2, studentId);
+
+            updateStmt.executeUpdate();
+            System.out.println("Update done!");
+
+            con.commit();
+            con.close();
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return newExam;
+    }
+    @Path("students/{id}/getExams")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<Pruefungsleistung> getPruefungsleistungFromStudent(@PathParam("id") int studentId) {
+
+        System.out.println("getPruefungsleistungFromStudent...");
+        ArrayList<Pruefungsleistung> pruefungsleistungenStudent = new ArrayList<>();
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://im-vm-011/vs-08", "vs-08", "vs-08-pw");
+            PreparedStatement selectStmt = null;
+            String query = "SELECT * FROM Pruefungsleistung WHERE matrikelNr = ?";
+
+            selectStmt = con.prepareStatement(query);
+            selectStmt.setInt(1,studentId);
+
+
+            ResultSet rs = selectStmt.executeQuery();
+
+            while(rs.next()) {
+                String pruefungID = rs.getString(2);
+                int versuch = rs.getInt(4);
+                double note = rs.getDouble(5);
+                Pruefungsleistung pl = new Pruefungsleistung(studentId, pruefungID, versuch, note);
+                pruefungsleistungenStudent.add(pl);
+                // System.out.println(pl.toString());
+            }
+
+
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return pruefungsleistungenStudent;
     }
 }

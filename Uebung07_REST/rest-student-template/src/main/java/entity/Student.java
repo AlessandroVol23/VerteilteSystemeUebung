@@ -15,6 +15,7 @@ public class Student {
     private String vorname;
     private String nachname;
     private  Address address;
+    private int ects;
 
     // Default-Konstruktor zwingend notwendig
     public Student() {}
@@ -34,6 +35,10 @@ public class Student {
         this.address = address;
     }
 
+    public Student(int matrikelNr, String vorname, String nachname, Address address, int ects) {
+        this(matrikelNr, vorname, nachname, address);
+        this.ects = ects;
+    }
 
     public int getMatrikelNr() {
         return matrikelNr;

@@ -16,8 +16,6 @@ public class UniklinikumRegensburg {
 		try {
 			Registry reg = LocateRegistry.getRegistry("localhost", 1099);
 			FrueherkennungsIF server = (FrueherkennungsIF) reg.lookup("LmuFrueherkennungsService");
-			RoentgenbildIF bild = new Roentgenbild("Sepp");
-//			server.analysiere(bild);
 			
 			// Erstelle Roentgenbild
 			Roentgenbild rBild = new Roentgenbild("Chris");
